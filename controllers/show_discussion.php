@@ -1,8 +1,5 @@
 <?php
 
-require 'functions.php';
-
-
 $discussions = require 'mock_data.php';
 
 $discussion = array_filter($discussions, function($discussion) {
@@ -16,4 +13,4 @@ if (empty($discussion)) {
     dd('Not found!');
 }
 
-dd($discussion);
+require 'views/show_discussion.view.php';
