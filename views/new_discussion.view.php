@@ -9,11 +9,6 @@
     </p>
 
     <p>
-        <label for="discussion_slug">Slug</label>
-        <input type="text" name="slug" id="discussion_slug">
-    </p>
-
-    <p>
         <label for="discussion_body">Body</label>
         <textarea name="body" id="discussion_body"></textarea>
     </p>

@@ -10,7 +10,7 @@ $userId = 1;
     insert into discussions (slug, title, body, category_id, user_id) 
     values (:slug, :title, :body, :category_id, :user_id)
 ', [
-    'slug' => bin2hex(random_bytes(16)), // TODO: Slugify titles,
+    'slug' => slugify($_POST['title']),
     'title' => $_POST['title'],
     'body' => $_POST['body'],
     'category_id' => $_POST['category_id'],
