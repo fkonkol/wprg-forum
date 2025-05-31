@@ -9,7 +9,7 @@ function dd($value) {
 
 function render($view, $context = []) {
     extract($context);
-    require "views/{$view}";
+    require "views/{$view}.view.php";
 }
 
 function halt($status = 404) {

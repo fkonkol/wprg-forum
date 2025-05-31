@@ -13,6 +13,6 @@ if (empty($discussion)) {
     halt();
 }
 
-render('show_discussion.view.php', [
+render('show_discussion', [
     'discussion' => $discussion,
 ]);
