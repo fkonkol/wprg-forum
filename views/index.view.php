@@ -27,6 +27,8 @@
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <a href="/new_discussion">Create a new discussion</a>
 </main>
 
 <?php require 'partials/foot.php' ?>

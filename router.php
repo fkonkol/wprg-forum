@@ -3,6 +3,8 @@
 $routes = [
     '/' => 'controllers/index.php',
     '/show_discussion' => 'controllers/show_discussion.php',
+    '/new_discussion' => 'controllers/new_discussion.php',
+    '/create_discussion' => 'controllers/create_discussion.php',
 ];
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
