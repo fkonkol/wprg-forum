@@ -14,12 +14,12 @@
             <tr>
                 <td><?= htmlspecialchars($discussion['title']) ?></td>
                 <td><?= htmlspecialchars($discussion['slug']) ?></td>
-                <td><?= htmlspecialchars($discussion['category']['name']) ?></td>
-                <td><?= htmlspecialchars($discussion['user']['name']) ?></td>
+                <td><?= htmlspecialchars($discussion['category_name']) ?></td>
+                <td><?= htmlspecialchars($discussion['user_name']) ?></td>
                 <td><?= htmlspecialchars($discussion['created_at']) ?></td>
                 <td>
                     <a 
-                        href="show_discussion?slug=<?= htmlspecialchars($discussion['slug']) ?>&category=<?= htmlspecialchars($discussion['category']['slug']) ?>"
+                        href="show_discussion?slug=<?= htmlspecialchars($discussion['slug']) ?>&category=<?= htmlspecialchars($discussion['category_slug']) ?>"
                     >
                         Show
                     </a>
