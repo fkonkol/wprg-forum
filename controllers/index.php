@@ -1,9 +1,8 @@
 <?php
 
-$dsn = "mysql:host=localhost;port=3306;dbname=wprg;charset=utf8mb4";
-$pdo = new PDO($dsn, 'root');
+require 'Database.php';
 
-$stmt = $pdo->prepare('
+$discussions = (new Database)->query('
     select d.id
          , d.slug
          , d.created_at
@@ -17,11 +16,7 @@ $stmt = $pdo->prepare('
       from discussions as d
       join categories as c on d.category_id = c.id
       join users as u on d.user_id = u.id
-');
-
-$stmt->execute();
-
-$discussions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+')->fetchAll();
 
 render('index', [
     'discussions' => $discussions,
