@@ -24,5 +24,6 @@ $discussion = (new Database)->query('
 ])->tryFetch();
 
 render('discussions/show', [
+    'title' => $discussion['title'],
     'discussion' => $discussion,
 ]);

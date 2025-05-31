@@ -1,3 +1,5 @@
 <?php
 
-render('discussions/new');
+render('discussions/new', [
+    'title' => 'Create a new discussion',
+]);

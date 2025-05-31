@@ -19,5 +19,6 @@ $discussions = (new Database)->query('
 ')->fetchAll();
 
 render('discussions/index', [
+    'title' => 'Discussions',
     'discussions' => $discussions,
 ]);
