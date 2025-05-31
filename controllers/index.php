@@ -2,4 +2,6 @@
 
 $discussions = require 'mock_data.php';
 
-require 'views/index.view.php';
+render('index.view.php', [
+    'discussions' => $discussions,
+]);

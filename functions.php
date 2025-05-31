@@ -6,3 +6,8 @@ function dd($value) {
     echo '</pre>';
     exit;
 }
+
+function render($view, $context = []) {
+    extract($context);
+    require "views/{$view}";
+}

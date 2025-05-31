@@ -13,4 +13,6 @@ if (empty($discussion)) {
     dd('Not found!');
 }
 
-require 'views/show_discussion.view.php';
+render('show_discussion.view.php', [
+    'discussion' => $discussion,
+]);
