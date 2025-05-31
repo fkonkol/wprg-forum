@@ -23,6 +23,6 @@ $discussion = (new Database)->query('
     'category_slug' => $_GET['category'], 
 ])->tryFetch();
 
-render('show_discussion', [
+render('discussions/show', [
     'discussion' => $discussion,
 ]);

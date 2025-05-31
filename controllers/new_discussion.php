@@ -1,3 +1,3 @@
 <?php
 
-render('new_discussion');
+render('discussions/new');

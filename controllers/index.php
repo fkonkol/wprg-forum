@@ -18,6 +18,6 @@ $discussions = (new Database)->query('
       join users as u on d.user_id = u.id
 ')->fetchAll();
 
-render('index', [
+render('discussions/index', [
     'discussions' => $discussions,
 ]);

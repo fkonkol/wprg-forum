@@ -1,4 +1,4 @@
-<?php require 'partials/head.php' ?>
+<?php require 'views/partials/head.php' ?>
 
 <main>
     <h1>Discussions</h1>
@@ -31,4 +31,4 @@
     <a href="/new_discussion">Create a new discussion</a>
 </main>
 
-<?php require 'partials/foot.php' ?>
+<?php require 'views/partials/foot.php' ?>
