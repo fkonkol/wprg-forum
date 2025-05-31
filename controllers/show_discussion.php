@@ -21,11 +21,7 @@ $discussion = (new Database)->query('
 ', [
     'discussion_slug' => $_GET['slug'],
     'category_slug' => $_GET['category'], 
-])->fetch();
-
-if (empty($discussion)) {
-    halt();
-}
+])->tryFetch();
 
 render('show_discussion', [
     'discussion' => $discussion,

@@ -3,6 +3,7 @@
 class Database
 {
     private $db;
+    private $stmt;
 
     public function __construct()
     {
@@ -14,9 +15,29 @@ class Database
 
     public function query($query, $params = [])
     {
-        $stmt = $this->db->prepare($query);
-        $stmt->execute($params);
+        $this->stmt = $this->db->prepare($query);
+        $this->stmt->execute($params);
 
-        return $stmt;
+        return $this;
+    }
+
+    public function fetch() {
+        return $this->stmt->fetch();
+    }
+
+    public function fetchAll() {
+        return $this->stmt->fetchAll();
+    }
+
+    // tryFetch attempts to fetch a single object from the database. 
+    // In case there are no results, 404 page is shown.
+    public function tryFetch() {
+        $data = $this->fetch();
+
+        if (empty($data)) {
+            halt(); 
+        }
+
+        return $data;
     }
 }
