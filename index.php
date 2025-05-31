@@ -9,6 +9,5 @@ if ($uri === '/') {
 } else if ($uri === '/show_discussion') {
     require 'controllers/show_discussion.php';
 } else {
-    echo 'Not found';
-    exit;
+    halt();
 }

@@ -10,7 +10,7 @@ $discussion = array_filter($discussions, function($discussion) {
 $discussion = reset($discussion);
 
 if (empty($discussion)) {
-    dd('Not found!');
+    halt();
 }
 
 render('show_discussion.view.php', [
