@@ -60,3 +60,8 @@ function timeAgo(DateTime $then) {
         default => "Less than a minute ago",
     };
 }
+
+function redirect($path) {
+    header("Location: {$path}");
+    exit;
+}

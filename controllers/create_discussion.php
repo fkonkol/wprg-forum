@@ -17,5 +17,4 @@ $userId = 1;
     'user_id' => $userId,
 ]);
 
-header("Location: /");
-exit;
+redirect('/');
