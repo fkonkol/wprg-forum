@@ -29,3 +29,34 @@ function slugify($string) {
 
     return $slug;
 }
+
+function pluralize(int $n, string $single, ?string $many = null) {
+    $inflection = ($n === 1) ? $single : ($many ?? "{$single}s");
+    return "$n $inflection";
+}
+
+// timeAgo is a very rough implementation of Rails' `time_ago_in_words`.
+function timeAgo(DateTime $then) {
+    $seconds = (new DateTime)->getTimestamp() - $then->getTimestamp();
+    $minutes = floor($seconds / 60);
+    $hours = floor($minutes / 60);
+    $days = floor($hours / 24);
+    $weeks = floor($days / 7);
+    $months = floor($weeks / 4);
+    $years = floor($months / 12);
+
+    return match (true) {
+        $years > 0 => pluralize($years, 'year') . " ago",
+        $months > 0 => pluralize($months, 'month') . " ago",
+        $weeks > 0 => pluralize($weeks, 'week') . " ago",
+        $days > 0 => pluralize($days, 'day') . " ago",
+        $hours > 0 => pluralize($hours, 'hour') . " ago",
+        $minutes > 0 => pluralize($minutes, 'minute') . " ago",
+        $seconds < 0 => "In the future",
+        $seconds < 5 => "Less than 5 seconds ago",
+        $seconds < 10 => "Less than 10 seconds ago",
+        $seconds < 20 => "Less than 20 seconds ago",
+        $seconds < 40 => "Half a minute ago",
+        default => "Less than a minute ago",
+    };
+}

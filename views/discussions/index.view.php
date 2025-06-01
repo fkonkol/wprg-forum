@@ -16,7 +16,7 @@
                 <td><?= htmlspecialchars($discussion['slug']) ?></td>
                 <td><?= htmlspecialchars($discussion['category_name']) ?></td>
                 <td><?= htmlspecialchars($discussion['user_name']) ?></td>
-                <td><?= htmlspecialchars($discussion['created_at']) ?></td>
+                <td><?= htmlspecialchars(timeAgo(new DateTime($discussion['created_at']))) ?></td>
                 <td>
                     <a 
                         href="show_discussion?slug=<?= htmlspecialchars($discussion['slug']) ?>&category=<?= htmlspecialchars($discussion['category_slug']) ?>"
