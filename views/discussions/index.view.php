@@ -31,6 +31,14 @@
                 </article>
             <?php endforeach; ?>
         </div>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <?php if (isset($category)): ?>
+                <a href="/?category=<?= htmlspecialchars($category) ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php else: ?>
+                <a href="/?page=<?= $i ?>"><?= $i ?></a>
+            <?php endif; ?>
+        <?php endfor; ?>
     </div>
 
     <div class="sidebar">
