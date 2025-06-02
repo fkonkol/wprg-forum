@@ -19,7 +19,7 @@
                                     <?= timeAgo(new DateTime($discussion['created_at'])) ?>
                                 </time>
                                 by <?= htmlspecialchars($discussion['user_name']) ?> in 
-                                <a href="#" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
+                                <a href="/?category=<?= htmlspecialchars($discussion['category_slug']) ?>" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
                                     <svg class="icon" style="--space: 0.3em">
                                         <use href="#<?= htmlspecialchars($discussion['category_slug']) ?>"></use>
                                     </svg>

@@ -247,3 +247,7 @@ input {
   padding: 0.5rem;
   font: inherit;
 }
+
+.text-capitalize {
+  text-transform: capitalize;
+}

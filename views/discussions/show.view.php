@@ -8,7 +8,7 @@
                 <p class="font-accent text-ellipsis" style="">
                     <a href="/">Discussions</a>
                     &rarr;
-                    <a href="#">Topic: <?= htmlspecialchars($discussion['category_name']) ?></a>
+                    <a href="/?category=<?= $discussion['category_slug'] ?>">Topic: <?= htmlspecialchars($discussion['category_name']) ?></a>
                     &rarr;
                     <a 
                         href="#" 

@@ -2,7 +2,9 @@
 
 require 'Database.php';
 
-$discussions = (new Database)->query('
+$category = $_GET['category'] ?? '';
+
+$discussions = (new Database)->query("
     select d.id
          , d.slug
          , d.created_at
@@ -16,10 +18,14 @@ $discussions = (new Database)->query('
       from discussions as d
       join categories as c on d.category_id = c.id
       join users as u on d.user_id = u.id
+      where c.slug = :category_slug or :category_slug = ''
       order by created_at desc
-')->fetchAll();
+", [
+    'category_slug' => $category,
+])->fetchAll();
 
 render('discussions/index', [
+    'category' => $category,
     'title' => 'Discussions',
     'discussions' => $discussions,
 ]);
