@@ -167,6 +167,12 @@ picture {
   display: block;
 }
 
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 h1, h2, h3, h4 {
   font-family: var(--ff-accent);
   line-height: 1;
@@ -244,8 +250,26 @@ body {
 }
 
 input {
-  padding: 0.5rem;
-  font: inherit;
+  width: 100%;
+  max-width: 255px;
+}
+
+input, textarea {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  outline: none;
+  border: 1px solid var(--c-neutral-6);
+  background-color: var(--c-neutral-3);
+}
+
+form {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  max-width: 60ch;
 }
 
 .text-capitalize {

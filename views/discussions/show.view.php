@@ -5,21 +5,22 @@
     <div class="flow">
         <div class="repel">
             <div style="flex: 1; min-width: 0">
-                <p class="font-accent text-ellipsis" style="">
+                <p class="font-accent text-ellipsis">
                     <a href="/">Discussions</a>
                     &rarr;
                     <a href="/?category=<?= $discussion->category()->slug() ?>">Topic: <?= htmlspecialchars($discussion->category()->name()) ?></a>
                     &rarr;
                     <a 
                         href="#" 
-                        style=";"
                         title="<?= htmlspecialchars($discussion->title()) ?>"
                     >
                         <?= htmlspecialchars($discussion->title()) ?>
                     </a>
                 </p>
             </div>
-            <button class="button button--secondary button--sunglow">Pin discussion</button>
+            <div>
+                <button class="button button--secondary button--sunglow">Pin discussion</button>
+            </div>
         </div>
 
         <div class="flow divide">
@@ -35,28 +36,64 @@
                     <p class="prose"><?= htmlspecialchars($discussion->body()) ?></p>
                     <div class="text-neutral-6">
                         <time datetime="<?= htmlspecialchars($discussion->createdAt()) ?>"><?= timeAgo(new DateTime($discussion->createdAt())) ?></time>
+
+                        &middot;
+
+                        <span class="with-icon" style="--space: 0.3em;">
+                            <img class="icon" src="/static/img/comments.svg" alt="">
+                            {comment count}
+                        </span>
                     </div>
                 </div>
             </div>
 
             <!-- Comments -->
-            <section>
-                <article class="entry padding-block-16">
+            <section class="flow">
+                <div class="entry">
                     <div>
                         <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion->author()->name()) ?>" class="avatar">
                     </div>
-                    <div class="flow" style="--flow-space: 1rem;">
-                        <p class="text-blueberry-6 fw-bold">murphy1893</p>
-                        <p class="prose">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima a blanditiis quibusdam, quisquam nisi explicabo dolore enim id aliquid sequi, eos ut, dicta iure cumque. Accusantium incidunt cum eius adipisci?</p>
+                    <form action="/comments/create" method="POST" class="flow" style="--flow-space: 0.5rem;">
+                        <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
 
-                        <!-- Bottom bar -->
-                        <p class="text-neutral-6">
-                            <time datetime="<?= htmlspecialchars($discussion->createdAt()) ?>">
-                                <?= timeAgo(new DateTime($discussion->createdAt())) ?>
-                            </time>
-                        </p>
-                    </div>
-                </article>
+                        <?php if (!Session::user()): ?>
+                            <div>
+                                <label for="guest_name" class="visually-hidden">Username</label>
+                                <input type="text" name="guest_name" id="guest_name" placeholder="What's your name?">
+                            </div>
+                        <?php endif; ?>
+
+                        <div>
+                            <label for="body" class="visually-hidden"></label>
+                            <textarea name="body" id="body" placeholder="Leave a comment" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="button button--primary button--blueberry">Comment</button>
+                    </form>
+                </div>
+
+                <div>
+                    <?php foreach($comments as $comment): ?>
+                        <article class="entry padding-block-16">
+                            <div>
+                                <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($comment['user_name']) ?>" class="avatar">
+                            </div>
+                            <div class="flow" style="--flow-space: 1rem;">
+                                <p class="text-blueberry-6 fw-bold"><?= $comment['user_name'] ?? 'Unknown' ?></p>
+                                <p class="prose">
+                                    <?= $comment['body'] ?>
+                                </p>
+
+                                <!-- Bottom bar -->
+                                <p class="text-neutral-6">
+                                    <time datetime="<?= htmlspecialchars($comment['created_at']) ?>">
+                                        <?= timeAgo(new DateTime($comment['created_at'])) ?>
+                                    </time>
+                                </p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
             </section>
         </div>
     </div>

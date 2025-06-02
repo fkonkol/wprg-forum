@@ -1,6 +1,8 @@
 <?php
 
-$data = (new Database)->query('
+$db = new Database;
+
+$data = $db->query('
     select d.id
         , d.slug
         , d.created_at
@@ -23,7 +25,21 @@ $data = (new Database)->query('
 
 $discussion = new Discussion($data);
 
+$comments = $db->query("
+    select c.id
+         , c.created_at
+         , c.discussion_id
+         , c.body
+         , COALESCE(u.name, c.guest_name) as user_name 
+    from comments as c
+    left join users as u on c.user_id = u.id
+    where c.discussion_id = :discussion_id
+", [
+    'discussion_id' => $discussion->id(),
+])->fetchAll();
+
 render('discussions/show', [
     'title' => $discussion->title(),
     'discussion' => $discussion,
+    'comments' => $comments,
 ]);
