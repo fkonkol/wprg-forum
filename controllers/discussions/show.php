@@ -1,8 +1,6 @@
 <?php
 
-require 'Database.php';
-
-$discussion = (new Database)->query('
+$data = (new Database)->query('
     select d.id
         , d.slug
         , d.created_at
@@ -23,7 +21,9 @@ $discussion = (new Database)->query('
     'category_slug' => $_GET['category'], 
 ])->tryFetch();
 
+$discussion = new Discussion($data);
+
 render('discussions/show', [
-    'title' => $discussion['title'],
+    'title' => $discussion->title(),
     'discussion' => $discussion,
 ]);

@@ -1,7 +1,5 @@
 <?php
 
-require 'Database.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: Validate the request here.
 
@@ -19,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user'] = [
                 'id' => $user['id'],
-                'username' => $user['name'],
+                'name' => $user['name'],
             ];
             session_regenerate_id(true);
 

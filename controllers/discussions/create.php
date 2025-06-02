@@ -1,11 +1,9 @@
 <?php
 
-require 'Database.php';
-
 // TODO: Validate the request form
 // dd($_POST);
 
-if (!isset($_SESSION['user'])) {
+if (!Session::user()) {
     redirect('/login');
 }
 
@@ -17,7 +15,7 @@ if (!isset($_SESSION['user'])) {
     'title' => $_POST['title'],
     'body' => $_POST['body'],
     'category_id' => $_POST['category_id'],
-    'user_id' => $_SESSION['user']['id'],
+    'user_id' => Session::user()->id(),
 ]);
 
 redirect('/');

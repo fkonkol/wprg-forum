@@ -1,7 +1,5 @@
 <?php
 
-require 'Database.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: Validate the request here.
 
