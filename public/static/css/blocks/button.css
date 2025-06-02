@@ -39,16 +39,16 @@ button,
 }
 
 .button--primary.button--neutral {
-  background-color: var(--c-neutral-6);
-  box-shadow: 0 4px 0 var(--c-neutral-7);
-  color: var(--c-neutral-1);
+  background-color: var(--c-neutral-1);
+  box-shadow: 0 4px 0 var(--c-neutral-5);
+  color: var(--c-neutral-7);
 }
 
 .button--secondary.button--neutral {
   outline: 2px solid var(--c-neutral-5);
   box-shadow: 0 4px 0 var(--c-neutral-5);
   color: var(--c-neutral-7);
-  background-color: var(--c-neutral-2);
+  background-color: var(--c-neutral-3);
 }
 
 button:hover,

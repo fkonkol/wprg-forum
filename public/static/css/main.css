@@ -287,3 +287,11 @@ textarea {
   align-items: center;
   color: var(--c-neutral-7);
 }
+
+select {
+  font-family: 'Inter', sans-serif !important;
+  text-transform: none !important;
+  appearance: none;
+  width: 100%;
+  max-width: 420px;
+}
