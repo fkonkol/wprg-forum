@@ -16,6 +16,7 @@ $discussions = (new Database)->query('
       from discussions as d
       join categories as c on d.category_id = c.id
       join users as u on d.user_id = u.id
+      order by created_at desc
 ')->fetchAll();
 
 render('discussions/index', [
