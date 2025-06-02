@@ -1,13 +1,10 @@
 <?php
 
 require 'Database.php';
+require 'Filters.php';
+require 'Metadata.php';
 
-$category = $_GET['category'] ?? '';
-
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
-$limit = 5;
-
-$offset = ($page - 1) * $limit;
+$filters = new Filters($_GET);
 
 $discussions = (new Database)->query("
     select d.id
@@ -26,20 +23,17 @@ $discussions = (new Database)->query("
       join users as u on d.user_id = u.id
       where c.slug = :category_slug or :category_slug = ''
       order by created_at desc
-      limit $limit offset $offset
+      limit {$filters->limit()} offset {$filters->offset()}
 ", [
-    'category_slug' => $category,
+    'category_slug' => $filters->category(),
 ])->fetchAll();
 
-if (count($discussions) > 0) {
-    $discussionsCount = $discussions[0]['count'];
-    $totalPages = ceil($discussionsCount / $limit);
-}
+$count = $discussions[0]['count'] ?? 0;
 
 render('discussions/index', [
-    'category' => $category,
+    'category' => $filters->category(),
     'title' => 'Discussions',
     'discussions' => $discussions,
-    'discussionsCount' => $discussionsCount ?? 0,
-    'totalPages' => $totalPages ?? 0,
+    'filters' => $filters,
+    'metadata' => new Metadata($filters->page(), $filters->limit(), $count),
 ]);

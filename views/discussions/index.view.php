@@ -32,9 +32,9 @@
             <?php endforeach; ?>
         </div>
 
-        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <?php if (isset($category)): ?>
-                <a href="/?category=<?= htmlspecialchars($category) ?>&page=<?= $i ?>"><?= $i ?></a>
+        <?php for ($i = 1; $i <= $metadata->totalPages(); $i++): ?>
+            <?php if (strlen($filters->category()) > 0): ?>
+                <a href="/?category=<?= $filters->category() ?>&page=<?= $i ?>"><?= $i ?></a>
             <?php else: ?>
                 <a href="/?page=<?= $i ?>"><?= $i ?></a>
             <?php endif; ?>
