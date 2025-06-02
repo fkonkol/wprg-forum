@@ -3,6 +3,7 @@
 @import './utilities/icon.css';
 @import './utilities/flow.css';
 @import './utilities/prose.css';
+@import './utilities/visually-hidden.css';
 @import './blocks/button.css';
 @import './blocks/key-header.css';
 @import './blocks/avatar.css';
@@ -240,4 +241,9 @@ body {
   white-space: nowrap; 
   text-overflow: ellipsis; 
   overflow: hidden; 
+}
+
+input {
+  padding: 0.5rem;
+  font: inherit;
 }
