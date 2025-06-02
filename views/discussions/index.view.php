@@ -33,7 +33,7 @@
         </div>
 
         <?php for ($i = 1; $i <= $metadata->totalPages(); $i++): ?>
-            <?php if (strlen($filters->category()) > 0): ?>
+            <?php if ($filters->hasCategory()): ?>
                 <a href="/?category=<?= $filters->category() ?>&page=<?= $i ?>"><?= $i ?></a>
             <?php else: ?>
                 <a href="/?page=<?= $i ?>"><?= $i ?></a>

@@ -4,6 +4,8 @@ require 'Database.php';
 require 'Filters.php';
 require 'Metadata.php';
 
+// TODO: Validate query params.
+
 $filters = new Filters($_GET);
 
 $discussions = (new Database)->query("

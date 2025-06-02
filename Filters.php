@@ -18,6 +18,11 @@ class Filters
         return $this->category;
     }
 
+    public function hasCategory()
+    {
+        return $this->category !== '';
+    }
+
     public function page()
     {
         return $this->page;
