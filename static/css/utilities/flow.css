@@ -1,0 +1,11 @@
+.flow > * + * {
+    margin-top: var(--flow-space, 1rem);
+}
+
+.divide > * + * {
+    border-top: 1px solid var(--flow-border-color, var(--c-neutral-5));
+}
+
+.flow.divide > * + * {
+    padding-top: 1rem;
+}

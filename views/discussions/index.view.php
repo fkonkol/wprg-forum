@@ -1,34 +1,40 @@
 <?php require 'views/partials/head.php' ?>
+<?php require 'views/partials/navigation.php' ?>
 
-<main>
-    <h1>Discussions</h1>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Slug</th>
-            <th>Category</th>
-            <th>Creator</th>
-            <th>Created at</th>
-        </tr>
-        <?php foreach ($discussions as $discussion): ?>
-            <tr>
-                <td><?= htmlspecialchars($discussion['title']) ?></td>
-                <td><?= htmlspecialchars($discussion['slug']) ?></td>
-                <td><?= htmlspecialchars($discussion['category_name']) ?></td>
-                <td><?= htmlspecialchars($discussion['user_name']) ?></td>
-                <td><?= htmlspecialchars(timeAgo(new DateTime($discussion['created_at']))) ?></td>
-                <td>
-                    <a 
-                        href="show_discussion?slug=<?= htmlspecialchars($discussion['slug']) ?>&category=<?= htmlspecialchars($discussion['category_slug']) ?>"
-                    >
-                        Show
-                    </a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+<main class="container flow with-sidebar" style="--flow-space: 2rem;">
+    <div class="flow">
+        <?php require 'views/partials/key-header.php' ?>
 
-    <a href="/new_discussion">Create a new discussion</a>
+        <div class="divide">
+            <?php foreach ($discussions as $discussion): ?>
+                <article class="entry padding-block-16">
+                    <div class="card__inner">
+                        <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion['user_name']) ?>" class="avatar">
+                        <div>
+                            <a href="/show_discussion?category=<?= htmlspecialchars($discussion['category_slug']) ?>&slug=<?= htmlspecialchars($discussion['slug']) ?>">
+                                <h2 class="fs-400"><?= htmlspecialchars($discussion['title']) ?></h2>
+                            </a>
+                            <p class="text-neutral-6">
+                                <time datetime="<?= htmlspecialchars($discussion['created_at']) ?>">
+                                    <?= timeAgo(new DateTime($discussion['created_at'])) ?>
+                                </time>
+                                by <?= htmlspecialchars($discussion['user_name']) ?> in 
+                                <a href="#" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
+                                    <svg class="icon" style="--space: 0.3em">
+                                        <use href="#<?= htmlspecialchars($discussion['category_slug']) ?>"></use>
+                                    </svg>
+                                    <?= htmlspecialchars($discussion['category_name']) ?>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="sidebar">
+    </div>
 </main>
 
 <?php require 'views/partials/foot.php' ?>
