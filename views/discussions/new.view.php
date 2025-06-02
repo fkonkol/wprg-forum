@@ -17,7 +17,7 @@
 
         <div>
             <label for="discussion_category_id" class="visually-hidden">Category</label>
-            <select class="button button--secondary button--neutral" name="category_id" id="discussion_category_id">
+            <select class="button button--primary button--neutral" name="category_id" id="discussion_category_id">
                 <option value="">Select a category</option>
                 <option value="1">French</option>
                 <option value="2">Spanish</option>

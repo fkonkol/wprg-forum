@@ -6,7 +6,7 @@
         <div>
             <?php if (isset($_SESSION['user'])): ?>
                 <form action="/logout" method="POST">
-                    <button type="submit" class="button button--secondary button--sunglow">Log out</button>
+                    <button type="submit" class="button button--secondary button--neutral">Log out</button>
                 </form>
             <?php else: ?>
                 <a href="/login" class="button">Log in</a>

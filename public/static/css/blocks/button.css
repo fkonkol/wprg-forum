@@ -32,23 +32,22 @@ button,
 }
 
 .button--secondary.button--blueberry {
-  outline: 2px solid var(--c-sunglow-6);
-  box-shadow: 0 4px 0 var(--c-sunglow-6);
-  color: var(--c-sunglow-6);
-  background-color: var(--c-sunglow-2);
+  outline: 2px solid var(--c-blueberry-6);
+  box-shadow: 0 4px 0 var(--c-blueberry-6);
+  color: var(--c-blueberry-6);
+  background-color: var(--c-blueberry-2);
 }
 
 .button--primary.button--neutral {
-  background-color: var(--c-neutral-1);
-  box-shadow: 0 4px 0 var(--c-neutral-5);
-  color: var(--c-neutral-7);
-}
-
-.button--secondary.button--neutral {
   outline: 2px solid var(--c-neutral-5);
   box-shadow: 0 4px 0 var(--c-neutral-5);
   color: var(--c-neutral-7);
   background-color: var(--c-neutral-3);
+}
+
+.button--secondary.button--neutral {
+  background: transparent;
+  color: var(--c-neutral-6);
 }
 
 button:hover,

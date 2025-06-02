@@ -8,7 +8,6 @@ if (!Session::user()) {
 }
 
 $repo = new DiscussionRepository(new Database);
-
 $repo->create($_POST);
 
 redirect('/');
