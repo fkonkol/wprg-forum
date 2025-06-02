@@ -275,3 +275,15 @@ textarea {
 .text-capitalize {
   text-transform: capitalize;
 }
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.pagination span {
+  display: flex;
+  align-items: center;
+  color: var(--c-neutral-7);
+}

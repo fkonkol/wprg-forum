@@ -13,6 +13,17 @@ class Metadata
         $this->totalRecords = $totalRecords;
     }
 
+    public function hasPreviousPage()
+    {
+        return $this->currentPage > 1;
+    }
+
+    public function hasNextPage()
+    {
+        return $this->currentPage != $this->totalPages();
+    }
+
+
     public function currentPage()
     {
         return $this->currentPage;

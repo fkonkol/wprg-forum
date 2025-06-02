@@ -38,6 +38,19 @@ button,
   background-color: var(--c-sunglow-2);
 }
 
+.button--primary.button--neutral {
+  background-color: var(--c-neutral-6);
+  box-shadow: 0 4px 0 var(--c-neutral-7);
+  color: var(--c-neutral-1);
+}
+
+.button--secondary.button--neutral {
+  outline: 2px solid var(--c-neutral-5);
+  box-shadow: 0 4px 0 var(--c-neutral-5);
+  color: var(--c-neutral-7);
+  background-color: var(--c-neutral-2);
+}
+
 button:hover,
 .button:hover {
   text-decoration: none;
@@ -52,10 +65,4 @@ button:active,
 button:hover,
 .button:hover {
   filter: brightness(1.04);
-}
-
-.button2 {
-  --button__background-color: var(--c-blueberry-5);
-  --button__lip-color: var(--c-blueberry-7);
-  --button__text-color: var(--c-neutral-1);
 }

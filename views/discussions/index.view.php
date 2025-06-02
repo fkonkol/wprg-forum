@@ -32,13 +32,7 @@
             <?php endforeach; ?>
         </div>
 
-        <?php for ($i = 1; $i <= $metadata->totalPages(); $i++): ?>
-            <?php if ($filters->hasCategory()): ?>
-                <a href="/?category=<?= $filters->category() ?>&page=<?= $i ?>"><?= $i ?></a>
-            <?php else: ?>
-                <a href="/?page=<?= $i ?>"><?= $i ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
+        <?php require base_path('views/partials/pagination.php') ?>
     </div>
 
     <div class="sidebar">
