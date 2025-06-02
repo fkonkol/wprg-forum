@@ -41,7 +41,7 @@
 
                         <span class="with-icon" style="--space: 0.3em;">
                             <img class="icon" src="/static/img/comments.svg" alt="">
-                            {comment count}
+                            <?= $comments_count ?>
                         </span>
                     </div>
                 </div>
