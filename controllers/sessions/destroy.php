@@ -1,3 +1,6 @@
 <?php
 
-dd("Skibidi");
+$_SESSION = [];
+session_destroy();
+
+redirect('/');
