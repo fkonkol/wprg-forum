@@ -1,4 +1,4 @@
-<?php require 'views/partials/head.php' ?>
+<?php require base_path('views/partials/head.php') ?>
 
 <h1>Create a new discussion</h1>
 
@@ -27,4 +27,4 @@
     </p>
 </form>
 
-<?php require 'views/partials/foot.php' ?>
+<?php require base_path('views/partials/foot.php') ?>

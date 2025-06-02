@@ -9,12 +9,12 @@ function dd($value) {
 
 function render($view, $context = []) {
     extract($context);
-    require "views/{$view}.view.php";
+    require base_path("views/{$view}.view.php");
 }
 
 function halt($status = 404) {
     http_response_code($status);
-    require "views/{$status}.view.php";
+    require base_path("views/{$status}.view.php");
     exit;
 }
 
@@ -64,4 +64,8 @@ function timeAgo(DateTime $then) {
 function redirect($path) {
     header("Location: {$path}");
     exit;
+}
+
+function base_path($path) {
+    return BASE_PATH . $path;
 }

@@ -1,5 +1,5 @@
-<?php require 'views/partials/head.php' ?>
-<?php require 'views/partials/navigation.php' ?>
+<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/navigation.php') ?>
 
 <main class="container with-sidebar flow" style="--flow-space: 2rem;">
     <div class="flow">
@@ -64,4 +64,4 @@
     </div>
 </main>
 
-<?php require 'views/partials/foot.php' ?>
+<?php require base_path('views/partials/foot.php') ?>
