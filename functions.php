@@ -69,3 +69,8 @@ function redirect($path) {
 function base_path($path) {
     return BASE_PATH . $path;
 }
+
+function redirect_back($fallback = '/') {
+    $path = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+    redirect($path);
+}

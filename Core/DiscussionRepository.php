@@ -32,6 +32,7 @@ class DiscussionRepository
         return $data ? new Discussion($data) : null;
     }
 
+    // TODO: Move into comments repository
     public function comments(int $id): array
     {
         return $this->db->query("
