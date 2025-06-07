@@ -1,4 +1,8 @@
 .avatar {
     border: 1px solid #e3e3e3;
     border-radius: 100%;
+    width: 64px;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1;
 }

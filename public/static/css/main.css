@@ -295,3 +295,33 @@ select {
   width: 100%;
   max-width: 420px;
 }
+
+.flex {
+  display: flex;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="file"] + label {
+  color: var(--c-blueberry-6);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+}
+
+label {
+  display: block;
+  font-weight: var(--fw-bold);
+}
+
+label + input,
+label + textarea {
+  margin-top: 0.5rem;
+}
+
+.align-center {
+  align-items: center;
+}

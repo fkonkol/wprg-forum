@@ -9,6 +9,7 @@ $routes = [
     '/login' => 'controllers/sessions/new.php',
     '/logout' => 'controllers/sessions/destroy.php',
     '/comments/create' => 'controllers/comments/create.php',
+    '/settings' => 'controllers/settings/edit.php',
 ];
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
