@@ -74,3 +74,11 @@ function redirect_back($fallback = '/') {
     $path = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
     redirect($path);
 }
+
+function authorize(bool $ok, int $status = 403) {
+    if (!$ok) {
+        halt($status);
+    }
+
+    return true;
+}

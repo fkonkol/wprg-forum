@@ -32,6 +32,30 @@ class DiscussionRepository
         return $data ? new Discussion($data) : null;
     }
 
+    public function find(int $id): ?Discussion
+    {
+        $data = $this->db->query("
+            select d.id
+                 , d.slug
+                 , d.created_at
+                 , d.title
+                 , d.body
+                 , c.id as category_id
+                 , c.name as category_name
+                 , c.slug as category_slug
+                 , u.id as user_id
+                 , u.name as user_name
+            from discussions as d
+            join categories as c on d.category_id = c.id
+            join users as u on d.user_id = u.id
+            where d.id = :discussion_id
+        ", [
+            'discussion_id' => $id,
+        ])->tryFetch();
+
+        return $data ? new Discussion($data) : null;
+    }
+
     // TODO: Move into comments repository
     public function comments(int $id): array
     {
