@@ -6,21 +6,19 @@ if (!Session::user()) {
     redirect('/login');
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+$username = $_POST['username'];
 
-    // TODO: Validate the request.
+// TODO: Validate the request.
 
-    $db->query("
-        UPDATE users
-        SET name = :username
-        WHERE id = :id
-    ", [
-        'username' => $username,
-        'id' => Session::user()->id(),
-    ]);
+$db->query("
+    UPDATE users
+    SET name = :username
+    WHERE id = :id
+", [
+    'username' => $username,
+    'id' => Session::user()->id(),
+]);
 
-    $_SESSION['user']['name'] = $username;
+$_SESSION['user']['name'] = $username;
 
-    redirect('/settings');
-}
+redirect('/settings');
