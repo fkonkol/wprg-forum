@@ -3,7 +3,8 @@
 
 <dialog id="actions">
     <div class="grid-flow">
-        <form action="/discussions/delete" method="post" class="grid-flow">
+        <form action="/discussions" method="post" class="grid-flow">
+            <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="id" value="<?= htmlspecialchars($discussion->id()) ?>">
             <button type="submit" class="button button--primary button--blueberry">Delete</button>
         </form>
