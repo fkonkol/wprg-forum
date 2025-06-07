@@ -4,7 +4,7 @@
 <main class="container">
     <section class="flow">
         <h1 class="fs-600">Sign up</h1>
-        <form method="POST" class="flow">
+        <form action="/register/create" method="POST" class="flow">
             <div>
                 <label for="username" class="visually-hidden">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username">
