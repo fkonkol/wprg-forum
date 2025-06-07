@@ -38,4 +38,9 @@ class Router
     {
         $this->addRoute('DELETE', $uri, $controller);
     }
+
+    public function put(string $uri, string $controller)
+    {
+        $this->addRoute('PUT', $uri, $controller);
+    }
 }

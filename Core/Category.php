@@ -1,30 +1,40 @@
 <?php
 
-class Category
+enum Category: string
 {
-    private int $id;
-    private string $slug;
-    private string $name;
+    case FRENCH = 'french';
+    case SPANISH = 'spanish';
 
-    public function __construct(array $params)
+    public function id(): int
     {
-        $this->id = $params['id'];
-        $this->slug = $params['slug'];
-        $this->name = $params['name'];
+        return match($this) {
+            self::FRENCH => 1,
+            self::SPANISH => 2,
+        };
     }
 
-    public function id()
+    public function name(): string
     {
-        return $this->id;
+        return match ($this) {
+            self::FRENCH => 'French',
+            self::SPANISH => 'Spanish',
+        };
     }
 
-    public function slug()
+    public function slug(): string
     {
-        return $this->slug;
+        return match ($this) {
+            self::FRENCH => 'french',
+            self::SPANISH => 'spanish',
+        };
     }
 
-    public function name()
+    public static function fromId(int $id): ?self
     {
-        return $this->name;
+        return match ($id) {
+            1 => self::FRENCH,
+            2 => self::SPANISH,
+            default => null,
+        };
     }
 }

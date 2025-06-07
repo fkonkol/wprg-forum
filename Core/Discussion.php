@@ -18,11 +18,7 @@ class Discussion
         $this->body = $params['body'];
         $this->createdAt = $params['created_at'];
 
-        $this->category = new Category([
-            'id' => $params['category_id'],
-            'slug' => $params['category_slug'],
-            'name' => $params['category_name'],
-        ]);
+        $this->category = Category::fromId($params['category_id']);
 
         $this->author = new User([
             'id' => $params['user_id'],
@@ -45,9 +41,20 @@ class Discussion
         return $this->title;
     }
 
+    public function setTitle($title)
+    {
+        $this->slug = slugify($title);
+        $this->title = $title;
+    }
+
     public function body()
     {
         return $this->body;
+    }
+
+    public function setBody($body)
+    {
+        $this->body = $body;
     }
 
     public function createdAt()
@@ -58,6 +65,11 @@ class Discussion
     public function category()
     {
         return $this->category;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 
     public function author()

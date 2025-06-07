@@ -5,6 +5,8 @@ $router = new Router();
 $router->get('/', 'controllers/discussions/index.php');
 $router->get('/discussions', 'controllers/discussions/show.php');
 $router->get('/discussions/new', 'controllers/discussions/new.php');
+$router->get('/discussions/edit', 'controllers/discussions/edit.php');
+$router->put('/discussions', 'controllers/discussions/update.php');
 $router->post('/discussions', 'controllers/discussions/create.php');
 $router->delete('/discussions', 'controllers/discussions/destroy.php');
 $router->get('/register', 'controllers/registrations/new.php');
