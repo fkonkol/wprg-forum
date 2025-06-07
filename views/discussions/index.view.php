@@ -11,7 +11,7 @@
                     <div class="card__inner">
                         <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion['user_name']) ?>" class="avatar">
                         <div>
-                            <a href="/show_discussion?category=<?= htmlspecialchars($discussion['category_slug']) ?>&slug=<?= htmlspecialchars($discussion['slug']) ?>">
+                            <a href="/discussions?category=<?= htmlspecialchars($discussion['category_slug']) ?>&slug=<?= htmlspecialchars($discussion['slug']) ?>">
                                 <h2 class="fs-400"><?= htmlspecialchars($discussion['title']) ?></h2>
                             </a>
                             <p class="text-neutral-6">

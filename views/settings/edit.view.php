@@ -12,7 +12,7 @@
         <label for="avatar">Change avatar</label>
     </div>
 
-    <form method="POST" class="flow" enctype="multipart/form-data">
+    <form action="/settings" method="POST" class="flow">
         <div>
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Username" value="<?= htmlspecialchars(Session::user()->name()) ?>">

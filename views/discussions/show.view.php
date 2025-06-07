@@ -1,6 +1,15 @@
 <?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/navigation.php') ?>
 
+<dialog id="actions">
+    <div class="grid-flow">
+        <form action="/discussions/delete" method="post" class="grid-flow">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($discussion->id()) ?>">
+            <button type="submit" class="button button--primary button--blueberry">Delete</button>
+        </form>
+    </div>
+</dialog>
+
 <main class="container with-sidebar flow" style="--flow-space: 2rem;">
     <div class="flow">
         <div class="repel">
@@ -20,6 +29,7 @@
             </div>
             <div>
                 <button class="button button--secondary button--sunglow">Pin discussion</button>
+                <button class="button button--secondary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
             </div>
         </div>
 
@@ -53,7 +63,7 @@
                     <div>
                         <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion->author()->name()) ?>" class="avatar">
                     </div>
-                    <form action="/comments/create" method="POST" class="flow" style="--flow-space: 0.5rem;">
+                    <form action="/comments" method="POST" class="flow" style="--flow-space: 0.5rem;">
                         <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
 
                         <?php if (!Session::user()): ?>

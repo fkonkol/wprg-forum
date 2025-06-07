@@ -2,7 +2,7 @@
 <?php require base_path('views/partials/navigation.php') ?>
 
 <main class="container">
-    <form action="/create_discussion" method="POST" class="flow">
+    <form action="/discussions" method="POST" class="flow">
         <h1>Create a new discussion</h1>
 
         <div>

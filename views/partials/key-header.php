@@ -6,5 +6,5 @@
             Discussions: <?= $filters->category() ?>
         <?php endif; ?>
     </h1>
-    <a href="/new_discussion" class="button button--primary button--sunglow">Got a question?</a>
+    <a href="/discussions/new" class="button button--primary button--sunglow">Got a question?</a>
 </div>
