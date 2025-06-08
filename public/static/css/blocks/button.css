@@ -4,8 +4,11 @@ button,
   text-decoration: none;
   font-family: var(--ff-accent);
   text-transform: uppercase;
+  text-align: center;
+  outline: none;
   border-radius: 1rem;
   padding: 0.75em 1.5em;
+  line-height: 1;
   font-size: 1rem;
   border: none;
   color: var(--c-neutral-6);
@@ -32,10 +35,10 @@ button,
 }
 
 .button--secondary.button--blueberry {
-  outline: 2px solid var(--c-blueberry-6);
-  box-shadow: 0 4px 0 var(--c-blueberry-6);
+  outline: 2px solid var(--c-blueberry-4);
+  box-shadow: 0 4px 0 var(--c-blueberry-4);
   color: var(--c-blueberry-6);
-  background-color: var(--c-blueberry-2);
+  background-color: var(--c-blueberry-1);
 }
 
 .button--primary.button--neutral {
@@ -45,9 +48,14 @@ button,
   background-color: var(--c-neutral-3);
 }
 
-.button--secondary.button--neutral {
+.button--tertiary.button--neutral {
   background: transparent;
   color: var(--c-neutral-6);
+}
+
+.button--tertiary.button--chili {
+  background: transparent;
+  color: var(--c-chili-6);
 }
 
 button:hover,
@@ -64,4 +72,8 @@ button:active,
 button:hover,
 .button:hover {
   filter: brightness(1.04);
+}
+
+.button--tertiary:active {
+  transform: none;
 }

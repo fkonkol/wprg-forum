@@ -6,7 +6,7 @@
         <div class="flex align-center">
             <?php if (isset($_SESSION['user'])): ?>
                 <form action="/logout" method="POST">
-                    <button type="submit" class="button button--secondary button--neutral">Log out</button>
+                    <button type="submit" class="button button--tertiary button--neutral">Log out</button>
                 </form>
                 <a href="/settings">
                     <div>

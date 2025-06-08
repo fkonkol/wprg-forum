@@ -3,11 +3,11 @@
 
 <dialog id="actions">
     <div class="grid-flow">
-        <a href="/discussions/edit?id=<?= $discussion->id() ?>" class="button button--primary button--sunglow">Update</a>
+        <a href="/discussions/edit?id=<?= $discussion->id() ?>" class="button button--secondary button--blueberry">Update</a>
         <form action="/discussions" method="post" class="grid-flow">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="id" value="<?= htmlspecialchars($discussion->id()) ?>">
-            <button type="submit" class="button button--primary button--blueberry">Delete</button>
+            <button type="submit" class="button button--tertiary button--chili">Delete</button>
         </form>
     </div>
 </dialog>
@@ -31,7 +31,7 @@
             </div>
             <div>
                 <button class="button button--secondary button--sunglow">Pin discussion</button>
-                <button class="button button--secondary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
+                <button class="button button--tertiary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
             </div>
         </div>
 
