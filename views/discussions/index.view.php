@@ -9,21 +9,21 @@
             <?php foreach ($discussions as $discussion): ?>
                 <article class="entry padding-block-16">
                     <div class="card__inner">
-                        <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion['user_name']) ?>" class="avatar">
+                        <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                         <div>
-                            <a href="/discussions?category=<?= htmlspecialchars($discussion['category_slug']) ?>&slug=<?= htmlspecialchars($discussion['slug']) ?>">
-                                <h2 class="fs-400"><?= htmlspecialchars($discussion['title']) ?></h2>
+                            <a href="<?= show_discussion_path($discussion) ?>">
+                                <h2 class="fs-400"><?= e($discussion->title()) ?></h2>
                             </a>
                             <p class="text-neutral-6">
-                                <time datetime="<?= htmlspecialchars($discussion['created_at']) ?>">
-                                    <?= timeAgo(new DateTime($discussion['created_at'])) ?>
+                                <time datetime="<?= e($discussion->createdAt()->format(DateTimeInterface::RFC3339)) ?>">
+                                    <?= time_ago($discussion->createdAt()) ?>
                                 </time>
-                                by <?= htmlspecialchars($discussion['user_name']) ?> in 
-                                <a href="/?category=<?= htmlspecialchars($discussion['category_slug']) ?>" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
+                                by <?= e($discussion->author()->name()) ?> in 
+                                <a href="/?category=<?= e($discussion->category()->slug()) ?>" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
                                     <svg class="icon" style="--space: 0.3em">
-                                        <use href="#<?= htmlspecialchars($discussion['category_slug']) ?>"></use>
+                                        <use href="#<?= e($discussion->category()->slug()) ?>"></use>
                                     </svg>
-                                    <?= htmlspecialchars($discussion['category_name']) ?>
+                                    <?= e($discussion->category()->name()) ?>
                                 </a>
                             </p>
                         </div>

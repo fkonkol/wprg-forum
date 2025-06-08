@@ -22,8 +22,14 @@
             <label for="discussion_category_id" class="visually-hidden">Category</label>
             <select class="button button--primary button--neutral" name="category_id" id="discussion_category_id">
                 <option value="">Select a category</option>
-                <option value="1" <?= $discussion->category()->id() === 1 ? 'selected' : '' ?>>French</option>
-                <option value="2" <?= $discussion->category()->id() === 2 ? 'selected' : '' ?>>Spanish</option>
+                <?php foreach (Category::cases() as $category): ?>
+                    <option 
+                        value="<?= $category->id() ?>" 
+                        <?= $discussion->category()->id() === $category->id() ? 'selected' : '' ?>
+                    >
+                        <?= e($category->name()) ?> 
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>
 

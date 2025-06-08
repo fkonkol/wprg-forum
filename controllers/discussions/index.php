@@ -4,7 +4,7 @@
 
 $filters = new Filters($_GET);
 
-$repo = new DiscussionRepository(new Database);
+$repo = App::resolve(DiscussionRepository::class);
 [$discussions, $metadata] = $repo->filter($filters);
 
 render('discussions/index', [

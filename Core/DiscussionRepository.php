@@ -52,6 +52,7 @@ class DiscussionRepository
         ", [
             'discussion_id' => $id,
         ])->tryFetch();
+        
 
         return $data ? new Discussion($data) : null;
     }
@@ -59,7 +60,7 @@ class DiscussionRepository
     // TODO: Move into comments repository
     public function comments(int $id): array
     {
-        return $this->db->query("
+        $data = $this->db->query("
             select c.id
                 , c.created_at
                 , c.discussion_id
@@ -72,11 +73,23 @@ class DiscussionRepository
         ", [
             'discussion_id' => $id,
         ])->fetchAll();
+
+        $count = $data[0]['count'] ?? 0;
+
+        $comments = [];
+        foreach ($data as $d) {
+            $comments[] = Comment::fromArray($d);
+        }
+
+        return [
+            $comments,
+            $count,
+        ]; 
     }
 
     public function filter(Filters $filters)
     {
-        $discussions = $this->db->query("
+        $data = $this->db->query("
             select d.id
                 , d.slug
                 , d.created_at
@@ -98,8 +111,13 @@ class DiscussionRepository
             'category_slug' => $filters->category(),
         ])->fetchAll();
 
-        $count = $discussions[0]['count'] ?? 0;
-        
+        $count = $data[0]['count'] ?? 0;
+
+        $discussions = [];
+        foreach ($data as $d) {
+            $discussions[] = new Discussion($d);
+        }
+
         return [
             $discussions,
             new Metadata($filters->page(), $filters->limit(), $count),
@@ -117,6 +135,16 @@ class DiscussionRepository
             'body' => $data['body'],
             'category_id' => $data['category_id'],
             'user_id' => Session::user()->id(),
+        ]);
+    }
+
+    public function destroy(int $id)
+    {
+        $this->db->query("
+            DELETE FROM discussions
+            WHERE id = :id
+        ", [
+            'id' => $id,
         ]);
     }
 }

@@ -5,7 +5,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$user = (new Database)->query(
+$user = App::resolve(Database::class)->query(
     "select * from users where name = :name",
     [
         'name' => $username,

@@ -1,6 +1,6 @@
 <?php
 
-if (!Session::user()) {
+if (!logged_in()) {
     redirect('/login');
 }
 
@@ -9,8 +9,7 @@ $title = $_POST['title'];
 $body = $_POST['body'];
 $categoryId = $_POST['category_id'];
 
-$db = new Database;
-$repo = new DiscussionRepository($db);
+$repo = App::resolve(DiscussionRepository::class);
 $discussion = $repo->find($id);
 
 $user = Session::user();

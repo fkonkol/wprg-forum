@@ -6,7 +6,7 @@ class Discussion
     private string $slug;
     private string $title;
     private string $body;
-    private string $createdAt;
+    private DateTimeImmutable $createdAt;
     private Category $category;
     private User $author;
 
@@ -16,7 +16,7 @@ class Discussion
         $this->slug = $params['slug'];
         $this->title = $params['title'];
         $this->body = $params['body'];
-        $this->createdAt = $params['created_at'];
+        $this->createdAt = new DateTimeImmutable($params['created_at']);
 
         $this->category = Category::fromId($params['category_id']);
 

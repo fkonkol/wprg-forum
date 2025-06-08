@@ -35,8 +35,8 @@ function pluralize(int $n, string $single, ?string $many = null) {
     return "$n $inflection";
 }
 
-// timeAgo is a very rough implementation of Rails' `time_ago_in_words`.
-function timeAgo(DateTime $then) {
+// time_ago is a very rough implementation of Rails' `time_ago_in_words`.
+function time_ago(DateTimeInterface $then) {
     $seconds = (new DateTime)->getTimestamp() - $then->getTimestamp();
     $minutes = floor($seconds / 60);
     $hours = floor($minutes / 60);
@@ -81,4 +81,27 @@ function authorize(bool $ok, int $status = 403) {
     }
 
     return true;
+}
+
+function e($value) {
+    return htmlspecialchars($value);
+}
+
+function show_discussion_path(Discussion $discussion) {
+    $query = http_build_query([
+        'category' => $discussion->category()->slug(), 
+        'slug' => $discussion->slug(),
+    ]);
+    return "/discussions?{$query}";
+}
+
+function edit_discussion_path(Discussion $discussion) {
+    $query = http_build_query([
+        'id' => $discussion->id(),
+    ]);
+    return "/discussions/edit?{$query}";
+}
+
+function logged_in(): bool {
+    return !!Session::user();
 }

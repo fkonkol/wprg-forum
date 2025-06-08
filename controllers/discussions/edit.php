@@ -1,10 +1,10 @@
 <?php
 
-if (!Session::user()) {
+if (!logged_in()) {
     redirect('/login');
 }
 
-$repo = new DiscussionRepository(new Database());
+$repo = App::resolve(DiscussionRepository::class);
 
 $id = $_GET['id'];
 $user = Session::user();

@@ -2,21 +2,21 @@
 
 $router = new Router();
 
-$router->get('/', 'controllers/discussions/index.php');
-$router->get('/discussions', 'controllers/discussions/show.php');
-$router->get('/discussions/new', 'controllers/discussions/new.php');
-$router->get('/discussions/edit', 'controllers/discussions/edit.php');
-$router->put('/discussions', 'controllers/discussions/update.php');
-$router->post('/discussions', 'controllers/discussions/create.php');
-$router->delete('/discussions', 'controllers/discussions/destroy.php');
-$router->get('/register', 'controllers/registrations/new.php');
-$router->post('/register', 'controllers/registrations/create.php');
-$router->get('/login', 'controllers/sessions/new.php');
-$router->post('/login', 'controllers/sessions/create.php');
-$router->post('/logout', 'controllers/sessions/destroy.php');
-$router->post('/comments', 'controllers/comments/create.php');
-$router->get('/settings', 'controllers/settings/edit.php');
-$router->post('/settings', 'controllers/settings/update.php');
+$router->get('/', 'discussions/index');
+$router->get('/discussions', 'discussions/show');
+$router->get('/discussions/new', 'discussions/new');
+$router->get('/discussions/edit', 'discussions/edit');
+$router->put('/discussions', 'discussions/update');
+$router->post('/discussions', 'discussions/create');
+$router->delete('/discussions', 'discussions/destroy');
+$router->get('/register', 'registrations/new');
+$router->post('/register', 'registrations/create');
+$router->get('/login', 'sessions/new');
+$router->post('/login', 'sessions/create');
+$router->post('/logout', 'sessions/destroy');
+$router->post('/comments', 'comments/create');
+$router->get('/settings', 'settings/edit');
+$router->post('/settings', 'settings/update');
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];

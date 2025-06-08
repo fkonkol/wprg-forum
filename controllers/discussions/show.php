@@ -1,13 +1,13 @@
 <?php
 
-$repo = new DiscussionRepository(new Database);
+$repo = App::resolve(DiscussionRepository::class);
 
 $discussion = $repo->findBySlugAndCategory($_GET['slug'], $_GET['category']);
-$comments = $repo->comments($discussion->id());
+[$comments, $commentsCount] = $repo->comments($discussion->id());
 
 render('discussions/show', [
     'title' => $discussion->title(),
     'discussion' => $discussion,
     'comments' => $comments,
-    'comments_count' => $comments[0]['count'] ?? 0,
+    'comments_count' => $commentsCount,
 ]);

@@ -2,7 +2,7 @@
 
 // TODO: Validate the request.
 
-$db = new Database;
+$db = App::resolve(Database::class);
 
 if (!Session::user()) {
     $db->query("

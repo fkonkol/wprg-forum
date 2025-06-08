@@ -8,7 +8,8 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['method'] === strtoupper($method) && $route['uri'] === $uri) {
-                return require base_path($route['controller']);
+                $controllerPath = base_path("controllers/{$route['controller']}.php");
+                return require $controllerPath;
             }
         }
 

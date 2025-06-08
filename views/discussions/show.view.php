@@ -3,10 +3,10 @@
 
 <dialog id="actions">
     <div class="grid-flow">
-        <a href="/discussions/edit?id=<?= $discussion->id() ?>" class="button button--secondary button--blueberry">Update</a>
+        <a href="<?= edit_discussion_path($discussion) ?>" class="button button--secondary button--blueberry">Update</a>
         <form action="/discussions" method="post" class="grid-flow">
             <input type="hidden" name="_method" value="delete">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($discussion->id()) ?>">
+            <input type="hidden" name="id" value="<?= $discussion->id() ?>">
             <button type="submit" class="button button--tertiary button--chili">Delete</button>
         </form>
     </div>
@@ -19,13 +19,13 @@
                 <p class="font-accent text-ellipsis">
                     <a href="/">Discussions</a>
                     &rarr;
-                    <a href="/?category=<?= $discussion->category()->slug() ?>">Topic: <?= htmlspecialchars($discussion->category()->name()) ?></a>
+                    <a href="/?category=<?= $discussion->category()->slug() ?>">Topic: <?= e($discussion->category()->name()) ?></a>
                     &rarr;
                     <a 
                         href="#" 
-                        title="<?= htmlspecialchars($discussion->title()) ?>"
+                        title="<?= e($discussion->title()) ?>"
                     >
-                        <?= htmlspecialchars($discussion->title()) ?>
+                        <?= e($discussion->title()) ?>
                     </a>
                 </p>
             </div>
@@ -38,16 +38,16 @@
         <div class="flow divide">
             <div class="entry">
                 <div>
-                    <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion->author()->name()) ?>" class="avatar">
+                    <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                 </div>
                 <div class="flow">
                     <div class="flow" style="--flow-space: 0.5rem;">
-                        <h1 class="fs-600"><?= htmlspecialchars($discussion->title()) ?></h1>
-                        <p class="text-blueberry-6 fw-bold"><?= htmlspecialchars($discussion->author()->name()) ?></p>
+                        <h1 class="fs-600"><?= e($discussion->title()) ?></h1>
+                        <p class="text-blueberry-6 fw-bold"><?= e($discussion->author()->name()) ?></p>
                     </div>
-                    <p class="prose"><?= htmlspecialchars($discussion->body()) ?></p>
+                    <p class="prose"><?= e($discussion->body()) ?></p>
                     <div class="text-neutral-6">
-                        <time datetime="<?= htmlspecialchars($discussion->createdAt()) ?>"><?= timeAgo(new DateTime($discussion->createdAt())) ?></time>
+                        <time datetime="<?= $discussion->createdAt()->format(DateTimeInterface::RFC3339) ?>"><?= time_ago($discussion->createdAt()) ?></time>
 
                         &middot;
 
@@ -63,7 +63,7 @@
             <section class="flow">
                 <div class="entry">
                     <div>
-                        <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($discussion->author()->name()) ?>" class="avatar">
+                        <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                     </div>
                     <form action="/comments" method="POST" class="flow" style="--flow-space: 0.5rem;">
                         <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
@@ -88,18 +88,18 @@
                     <?php foreach($comments as $comment): ?>
                         <article class="entry padding-block-16">
                             <div>
-                                <img src="/static/img/avatar.png" alt="Profile picture of <?= htmlspecialchars($comment['user_name']) ?>" class="avatar">
+                                <img src="/static/img/avatar.png" alt="Profile picture of <?= e($comment->username()) ?>" class="avatar">
                             </div>
                             <div class="flow" style="--flow-space: 1rem;">
-                                <p class="text-blueberry-6 fw-bold"><?= $comment['user_name'] ?? 'Unknown' ?></p>
+                                <p class="text-blueberry-6 fw-bold"><?= e($comment->username()) ?></p>
                                 <p class="prose">
-                                    <?= $comment['body'] ?>
+                                    <?= e($comment->body()) ?>
                                 </p>
 
                                 <!-- Bottom bar -->
                                 <p class="text-neutral-6">
-                                    <time datetime="<?= htmlspecialchars($comment['created_at']) ?>">
-                                        <?= timeAgo(new DateTime($comment['created_at'])) ?>
+                                    <time datetime="<?= $comment->createdAt()->format(DateTimeImmutable::RFC3339) ?>">
+                                        <?= time_ago($comment->createdAt()) ?>
                                     </time>
                                 </p>
                             </div>

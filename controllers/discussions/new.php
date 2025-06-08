@@ -1,6 +1,6 @@
 <?php
 
-if (!Session::user()) {
+if (!logged_in()) {
     redirect('/login');
 }
 

@@ -3,11 +3,11 @@
 // TODO: Validate the request form
 // dd($_POST);
 
-if (!Session::user()) {
+if (!logged_in()) {
     redirect('/login');
 }
 
-$repo = new DiscussionRepository(new Database);
+$repo = App::resolve(DiscussionRepository::class);
 $repo->create($_POST);
 
 redirect('/');
