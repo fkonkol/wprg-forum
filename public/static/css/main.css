@@ -333,6 +333,12 @@ input[type="file"] + label {
   display: inline-block;
 }
 
+input + small,
+select + small,
+textarea + small {
+  color: var(--c-chili-6);
+}
+
 label {
   display: block;
   font-weight: var(--fw-bold);

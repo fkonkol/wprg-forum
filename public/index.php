@@ -14,3 +14,5 @@ App::bind('Database', fn() => new Database());
 App::bind('DiscussionRepository', fn() => new DiscussionRepository(App::resolve('Database')));
 
 require base_path('router.php');
+
+unset($_SESSION['_flash']);

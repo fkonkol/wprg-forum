@@ -37,4 +37,12 @@ enum Category: string
             default => null,
         };
     }
+
+    public static function idCases(): array
+    {
+        return array_map(
+            fn(self $category) => $category->id(),
+            self::cases(),
+        );
+    }
 }
