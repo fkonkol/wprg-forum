@@ -15,4 +15,4 @@ App::bind('DiscussionRepository', fn() => new DiscussionRepository(App::resolve(
 
 require base_path('router.php');
 
-unset($_SESSION['_flash']);
+Session::unflash();

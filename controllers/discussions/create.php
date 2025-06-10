@@ -87,7 +87,7 @@ $v->maxRunes('body', 1000, 'The maximum number of characters allowed is 1000.');
 $v->in('category_id', Category::idCases(), 'Category is required.');
 
 if ($v->invalid()) {
-    $_SESSION['_flash']['errors'] = $v->errors();
+    Session::flash('errors', $v->errors());
     redirect_back();
 }
 
