@@ -19,6 +19,7 @@ class DiscussionRepository
                 , c.slug as category_slug
                 , u.id as user_id
                 , u.name as user_name
+                , u.avatar_url as user_avatar_url
             from discussions as d
             join categories as c on d.category_id = c.id
             join users as u on d.user_id = u.id
@@ -45,6 +46,7 @@ class DiscussionRepository
                  , c.slug as category_slug
                  , u.id as user_id
                  , u.name as user_name
+                 , u.avatar_url as user_avatar_url
             from discussions as d
             join categories as c on d.category_id = c.id
             join users as u on d.user_id = u.id
@@ -66,6 +68,7 @@ class DiscussionRepository
                 , c.discussion_id
                 , c.body
                 , coalesce(u.name, c.guest_name) as user_name 
+                , coalesce(u.avatar_url, '/static/img/avatar.png') as user_avatar_url
                 , count(*) over() as count
             from comments as c
             left join users as u on c.user_id = u.id
@@ -100,6 +103,7 @@ class DiscussionRepository
                 , c.slug as category_slug
                 , u.id as user_id
                 , u.name as user_name
+                , u.avatar_url as user_avatar_url
                 , count(*) over() as count
             from discussions as d
             join categories as c on d.category_id = c.id

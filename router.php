@@ -17,6 +17,7 @@ $router->post('/logout', 'sessions/destroy');
 $router->post('/comments', 'comments/create');
 $router->get('/settings', 'settings/edit');
 $router->post('/settings', 'settings/update');
+$router->put('/settings/avatar', 'settings/avatar/update');
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];

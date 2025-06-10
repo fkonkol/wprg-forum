@@ -9,7 +9,7 @@
             <?php foreach ($discussions as $discussion): ?>
                 <article class="entry padding-block-16">
                     <div class="card__inner">
-                        <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
+                        <img src="<?= $discussion->author()->avatarUrl() ?>" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                         <div>
                             <a href="<?= show_discussion_path($discussion) ?>">
                                 <h2 class="fs-400"><?= e($discussion->title()) ?></h2>

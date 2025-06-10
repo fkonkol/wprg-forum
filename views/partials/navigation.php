@@ -10,7 +10,7 @@
                 </form>
                 <a href="/settings">
                     <div>
-                        <img src="/static/img/avatar.png" alt="" class="avatar">
+                        <img src="<?= Session::user()->avatarUrl() ?>" alt="" class="avatar">
                     </div>
                 </a>
             <?php else: ?>

@@ -7,6 +7,7 @@ class Comment
         private int $discussionId,
         private string $body,
         private string $username,
+        private string $avatarUrl,
         private DateTimeImmutable $createdAt,
     ) {}
 
@@ -17,6 +18,7 @@ class Comment
             $params['discussion_id'],
             $params['body'],
             $params['user_name'],
+            $params['user_avatar_url'],
             new DateTimeImmutable($params['created_at']),
         );
     }
@@ -39,6 +41,11 @@ class Comment
     public function username(): string
     {
         return $this->username;
+    }
+
+    public function avatarUrl(): string
+    {
+        return $this->avatarUrl;
     }
 
     public function createdAt(): DateTimeImmutable

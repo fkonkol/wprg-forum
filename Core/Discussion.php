@@ -23,6 +23,7 @@ class Discussion
         $this->author = new User([
             'id' => $params['user_id'],
             'name' => $params['user_name'],
+            'avatar_url' => $params['user_avatar_url'],
         ]);
     }
 

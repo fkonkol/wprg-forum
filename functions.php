@@ -102,6 +102,11 @@ function edit_discussion_path(Discussion $discussion) {
     return "/discussions/edit?{$query}";
 }
 
+function avatar_path(string $filename)
+{
+    return "/storage/avatars/{$filename}";
+}
+
 function logged_in(): bool {
     return !!Session::user();
 }

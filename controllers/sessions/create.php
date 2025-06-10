@@ -17,6 +17,7 @@ if ($user) {
         $_SESSION['user'] = [
             'id' => $user['id'],
             'name' => $user['name'],
+            'avatar_url' => $user['avatar_url'],
         ];
         session_regenerate_id(true);
 

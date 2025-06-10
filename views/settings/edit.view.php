@@ -6,10 +6,17 @@
 
     <div class="flow" style="--flow-space: 0.5rem;">
         <div>
-            <img id="preview" src="/static/img/avatar.png" alt="" class="avatar">
+            <img id="preview" src="<?= Session::user()->avatarUrl() ?>" alt="" class="avatar">
         </div>
-        <input type="file" name="avatar" id="avatar">
-        <label for="avatar">Change avatar</label>
+
+        <form action="/settings/avatar" method="POST" class="flow" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="put">
+            <input type="file" name="avatar" id="avatar">
+            <label for="avatar">Select avatar</label>
+            <div>
+                <button type="submit" class="button button--primary button--blueberry">Save changes</button>
+            </div>
+        </form>
     </div>
 
     <form action="/settings" method="POST" class="flow">

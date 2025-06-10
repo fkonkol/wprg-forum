@@ -38,7 +38,7 @@
         <div class="flow divide">
             <div class="entry">
                 <div>
-                    <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
+                    <img src="<?= $discussion->author()->avatarUrl() ?>" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                 </div>
                 <div class="flow">
                     <div class="flow" style="--flow-space: 0.5rem;">
@@ -63,7 +63,7 @@
             <section class="flow">
                 <div class="entry">
                     <div>
-                        <img src="/static/img/avatar.png" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
+                        <img src="<?= Session::user()->avatarUrl() ?? '/static/img/avatar.png' ?>" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                     </div>
                     <form action="/comments" method="POST" class="flow" style="--flow-space: 0.5rem;">
                         <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
@@ -88,7 +88,7 @@
                     <?php foreach($comments as $comment): ?>
                         <article class="entry padding-block-16">
                             <div>
-                                <img src="/static/img/avatar.png" alt="Profile picture of <?= e($comment->username()) ?>" class="avatar">
+                                <img src="<?= $comment->avatarUrl() ?>" alt="Profile picture of <?= e($comment->username()) ?>" class="avatar">
                             </div>
                             <div class="flow" style="--flow-space: 1rem;">
                                 <p class="text-blueberry-6 fw-bold"><?= e($comment->username()) ?></p>
