@@ -14,4 +14,5 @@ authorize($user && ($user->id() === $discussion->author()->id()));
 
 render('discussions/edit', [
     'discussion' => $discussion,
+    'errors' => $_SESSION['_flash']['errors'] ?? [],
 ]);

@@ -8,17 +8,23 @@
         <input type="hidden" name="_method" value="put">
         <input type="hidden" name="id" value="<?= $discussion->id() ?>">
 
-        <div>
+        <div class="grid-flow">
             <label for="discussion_title" class="visually-hidden">Title</label>
             <input type="text" name="title" id="discussion_title" placeholder="Title" value="<?= htmlspecialchars($discussion->title()) ?>">
+            <?php if (isset($errors['title'])): ?>
+                <small><?= e($errors['title']) ?></small>
+            <?php endif; ?>
         </div>
 
-        <div>
+        <div class="grid-flow">
             <label for="discussion_body" class="visually-hidden">Body</label>
             <textarea name="body" id="discussion_body" placeholder="Body" rows="4"><?= htmlspecialchars($discussion->body()) ?></textarea>
+            <?php if (isset($errors['body'])): ?>
+                <small><?= e($errors['body']) ?></small>
+            <?php endif; ?>
         </div>
 
-        <div>
+        <div class="grid-flow">
             <label for="discussion_category_id" class="visually-hidden">Category</label>
             <select class="button button--primary button--neutral" name="category_id" id="discussion_category_id">
                 <option value="">Select a category</option>
@@ -31,6 +37,9 @@
                     </option>
                 <?php endforeach; ?>
             </select>
+            <?php if (isset($errors['category_id'])): ?>
+                <small><?= e($errors['category_id']) ?></small>
+            <?php endif; ?>
         </div>
 
         <button type="submit" class="button button--primary button--blueberry">Submit</button>

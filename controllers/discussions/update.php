@@ -4,6 +4,13 @@ if (!logged_in()) {
     redirect('/login');
 }
 
+$form = new DiscussionForm($_POST);
+
+if ($form->invalid()) {
+    Session::flash('errors', $form->errors());
+    redirect_back();
+}
+
 $id = $_POST['id'];
 $title = $_POST['title'];
 $body = $_POST['body'];
@@ -21,8 +28,6 @@ if ($discussion->title() !== $title) {
 
 $discussion->setBody($body);
 $discussion->setCategory(Category::fromId($categoryId));
-
-// TODO: Validate the request.
 
 $db->query("
     UPDATE discussions
