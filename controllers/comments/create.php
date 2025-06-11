@@ -1,10 +1,15 @@
 <?php
 
-// TODO: Validate the request.
-
 $db = App::resolve(Database::class);
 
 if (!Session::user()) {
+    $form = new AnonymousCommentForm($_POST);
+
+    if ($form->invalid()) {
+        Session::flash('errors', $form->errors());
+        redirect_back();
+    }
+
     $db->query("
         insert into comments (discussion_id, guest_name, body)
         values (:discussion_id, :guest_name, :body)
@@ -14,6 +19,13 @@ if (!Session::user()) {
         'body' => $_POST['body'],
     ]);
 } else {
+    $form = new UserCommentForm($_POST);
+
+    if ($form->invalid()) {
+        Session::flash('errors', $form->errors());
+        redirect_back();
+    }
+
     $db->query("
         insert into comments (discussion_id, user_id, body)
         values (:discussion_id, :user_id, :body)

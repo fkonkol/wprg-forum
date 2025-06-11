@@ -69,15 +69,21 @@
                         <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
 
                         <?php if (!Session::user()): ?>
-                            <div>
+                            <div class="grid-flow">
                                 <label for="guest_name" class="visually-hidden">Username</label>
                                 <input type="text" name="guest_name" id="guest_name" placeholder="What's your name?">
+                                <?php if (isset($errors['guest_name'])): ?>
+                                    <small><?= $errors['guest_name'] ?></small>
+                                <?php endif; ?>
                             </div>
                         <?php endif; ?>
 
-                        <div>
+                        <div class="grid-flow">
                             <label for="body" class="visually-hidden"></label>
                             <textarea name="body" id="body" placeholder="Leave a comment" rows="4"></textarea>
+                            <?php if (isset($errors['body'])): ?>
+                                <small><?= $errors['body'] ?></small>
+                            <?php endif; ?>
                         </div>
 
                         <button type="submit" class="button button--primary button--blueberry">Comment</button>

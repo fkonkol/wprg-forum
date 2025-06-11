@@ -10,4 +10,5 @@ render('discussions/show', [
     'discussion' => $discussion,
     'comments' => $comments,
     'comments_count' => $commentsCount,
+    'errors' => $_SESSION['_flash']['errors'] ?? [],
 ]);
