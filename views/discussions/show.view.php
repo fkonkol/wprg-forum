@@ -63,7 +63,7 @@
             <section class="flow">
                 <div class="entry">
                     <div>
-                        <img src="<?= Session::user()->avatarUrl() ?? '/static/img/avatar.png' ?>" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
+                        <img src="<?= Session::user() ? Session::user()->avatarUrl() : '/static/img/avatar.png' ?>" alt="Profile picture of <?= e($discussion->author()->name()) ?>" class="avatar">
                     </div>
                     <form action="/comments" method="POST" class="flow" style="--flow-space: 0.5rem;">
                         <input type="hidden" name="discussion_id" value="<?= $discussion->id() ?>">
