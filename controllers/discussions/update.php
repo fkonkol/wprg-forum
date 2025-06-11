@@ -20,7 +20,14 @@ $repo = App::resolve(DiscussionRepository::class);
 $discussion = $repo->find($id);
 
 $user = Session::user();
-authorize($user && ($user->id() === $discussion->author()->id()));
+
+authorize(
+    $user && (
+        $user->id() === $discussion->author()->id() 
+        || $user->isAdmin() 
+        || $user->isModerator()
+    )
+);
 
 if ($discussion->title() !== $title) {
     $discussion->setTitle($title);

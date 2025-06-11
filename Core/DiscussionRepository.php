@@ -20,6 +20,7 @@ class DiscussionRepository
                 , u.id as user_id
                 , u.name as user_name
                 , u.avatar_url as user_avatar_url
+                , u.role as user_role
             from discussions as d
             join categories as c on d.category_id = c.id
             join users as u on d.user_id = u.id
@@ -47,6 +48,7 @@ class DiscussionRepository
                  , u.id as user_id
                  , u.name as user_name
                  , u.avatar_url as user_avatar_url
+                 , u.role as user_role
             from discussions as d
             join categories as c on d.category_id = c.id
             join users as u on d.user_id = u.id
@@ -104,6 +106,7 @@ class DiscussionRepository
                 , u.id as user_id
                 , u.name as user_name
                 , u.avatar_url as user_avatar_url
+                , u.role as user_role
                 , count(*) over() as count
             from discussions as d
             join categories as c on d.category_id = c.id

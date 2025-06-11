@@ -10,8 +10,12 @@ $id = $_POST['id'];
 $discussion = $repo->find($id);
 
 $user = Session::user();
-
-authorize($user && ($user->id() === $discussion->author()->id()));
+authorize(
+    $user && (
+        $user->id() === $discussion->author()->id() 
+        || $user->isAdmin() 
+    )
+);
 
 $repo->destroy($id);
 

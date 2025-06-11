@@ -16,12 +16,13 @@ $user = $db->query(
 
 if (!$user) {
     $db->query("
-        insert into users (name, password, avatar_url)
-        values (:name, :password, :avatar_url)
+        insert into users (name, password, avatar_url, role)
+        values (:name, :password, :avatar_url, :role)
     ", [
         'name' => $username,
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'avatar_url' => '/static/img/avatar.png',
+        'role' => Role::USER->value,
     ]);
 
     // TODO: Login the user here.
