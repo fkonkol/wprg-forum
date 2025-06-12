@@ -1,9 +1,10 @@
 <?php
 
-$repo = App::resolve(DiscussionRepository::class);
+$discussionsRepo = App::resolve(DiscussionRepository::class);
+$commentsRepo = App::resolve(CommentRepository::class);
 
-$discussion = $repo->findBySlugAndCategory($_GET['slug'], $_GET['category']);
-[$comments, $commentsCount] = $repo->comments($discussion->id());
+$discussion = $discussionsRepo->findBySlugAndCategory($_GET['slug'], $_GET['category']);
+[$comments, $commentsCount] = $commentsRepo->findAllByDiscussionId($discussion->id());
 
 render('discussions/show', [
     'title' => $discussion->title(),

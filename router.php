@@ -9,12 +9,19 @@ $router->get('/discussions/edit', 'discussions/edit');
 $router->put('/discussions', 'discussions/update');
 $router->post('/discussions', 'discussions/create');
 $router->delete('/discussions', 'discussions/destroy');
+
+$router->post('/comments', 'comments/create');
+$router->get('/comments/edit', 'comments/edit');
+$router->put('/comments', 'comments/update');
+$router->delete('/comments', 'comments/destroy');
+
 $router->get('/register', 'registrations/new');
 $router->post('/register', 'registrations/create');
+
 $router->get('/login', 'sessions/new');
 $router->post('/login', 'sessions/create');
 $router->post('/logout', 'sessions/destroy');
-$router->post('/comments', 'comments/create');
+
 $router->get('/settings', 'settings/edit');
 $router->post('/settings', 'settings/update');
 $router->put('/settings/avatar', 'settings/avatar/update');

@@ -12,6 +12,7 @@ spl_autoload_register(function ($class) {
 
 App::bind('Database', fn() => new Database());
 App::bind('DiscussionRepository', fn() => new DiscussionRepository(App::resolve('Database')));
+App::bind('CommentRepository', fn() => new CommentRepository(App::resolve('Database')));
 
 require base_path('router.php');
 

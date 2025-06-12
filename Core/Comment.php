@@ -8,6 +8,7 @@ class Comment
         private string $body,
         private string $username,
         private string $avatarUrl,
+        private bool $isGuest,
         private DateTimeImmutable $createdAt,
     ) {}
 
@@ -19,6 +20,7 @@ class Comment
             $params['body'],
             $params['user_name'],
             $params['user_avatar_url'],
+            (bool) $params['is_guest'],
             new DateTimeImmutable($params['created_at']),
         );
     }
@@ -48,8 +50,23 @@ class Comment
         return $this->avatarUrl;
     }
 
+    public function isGuest(): bool
+    {
+        return $this->isGuest;
+    }
+
     public function createdAt(): DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function setBody(): string
+    {
+        return $this->body;
+    }
+
+    public function setGuestName(): string
+    {
+        return $this->username;
     }
 }

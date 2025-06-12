@@ -4,11 +4,13 @@
 <dialog id="actions">
     <div class="grid-flow">
         <a href="<?= edit_discussion_path($discussion) ?>" class="button button--secondary button--blueberry">Update</a>
+        <?php if (Session::user() && Session::user()->isAdmin()): ?>
         <form action="/discussions" method="post" class="grid-flow">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="id" value="<?= $discussion->id() ?>">
             <button type="submit" class="button button--tertiary button--chili">Delete</button>
         </form>
+        <?php endif; ?>
     </div>
 </dialog>
 
@@ -31,7 +33,9 @@
             </div>
             <div>
                 <button class="button button--secondary button--sunglow">Pin discussion</button>
-                <button class="button button--tertiary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
+                <?php if (Session::user() && (Session::user()->isModerator() || Session::user()->isAdmin())): ?>
+                    <button class="button button--tertiary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -97,17 +101,31 @@
                                 <img src="<?= $comment->avatarUrl() ?>" alt="Profile picture of <?= e($comment->username()) ?>" class="avatar">
                             </div>
                             <div class="flow" style="--flow-space: 1rem;">
-                                <p class="text-blueberry-6 fw-bold"><?= e($comment->username()) ?></p>
+                                <p class="<?= $comment->isGuest() ? 'text-neutral-6' : 'text-blueberry-6' ?> fw-bold"><?= e($comment->username()) ?></p>
                                 <p class="prose">
                                     <?= e($comment->body()) ?>
                                 </p>
 
                                 <!-- Bottom bar -->
-                                <p class="text-neutral-6">
-                                    <time datetime="<?= $comment->createdAt()->format(DateTimeImmutable::RFC3339) ?>">
-                                        <?= time_ago($comment->createdAt()) ?>
-                                    </time>
-                                </p>
+                                <div class="repel">
+                                    <p class="text-neutral-6">
+                                        <time datetime="<?= $comment->createdAt()->format(DateTimeImmutable::RFC3339) ?>">
+                                            <?= time_ago($comment->createdAt()) ?>
+                                        </time>
+                                    </p>
+                                    <div class="repel">
+                                        <?php if (Session::user() && (Session::user()->isModerator() || Session::user()->isAdmin())): ?>
+                                            <a href="/comments/edit?id=<?= $comment->id() ?>" class="button button--tertiary button--blueberry">Update</a>
+                                        <?php endif; ?>
+                                        <?php if (Session::user() && Session::user()->isAdmin()): ?>
+                                            <form action="/comments" method="post" class="grid-flow">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <input type="hidden" name="id" value="<?= $comment->id() ?>">
+                                                <button type="submit" class="button button--tertiary button--chili">Delete</button>
+                                            </form>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </article>
                     <?php endforeach; ?>

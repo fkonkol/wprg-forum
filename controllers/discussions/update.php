@@ -36,7 +36,7 @@ if ($discussion->title() !== $title) {
 $discussion->setBody($body);
 $discussion->setCategory(Category::fromId($categoryId));
 
-$db->query("
+(App::resolve(Database::class))->query("
     UPDATE discussions
     SET slug = :slug, title = :title, body = :body, category_id = :category_id
     WHERE id = :id
