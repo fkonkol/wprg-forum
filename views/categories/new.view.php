@@ -1,0 +1,28 @@
+<?php require base_path('views/partials/head.php') ?>
+<?php require base_path('views/partials/navigation.php') ?>
+
+<main class="container">
+    <form action="/categories" method="POST" class="flow">
+        <h1>Create a new category</h1>
+
+        <div class="grid-flow">
+            <label for="category_name" class="visually-hidden">Name</label>
+            <input type="text" name="name" id="category_name" placeholder="Name">
+            <?php if (isset($errors['name'])): ?>
+                <small><?= e($errors['name']) ?></small>
+            <?php endif; ?>
+        </div>
+
+        <div class="grid-flow">
+            <label for="category_slug" class="visually-hidden">Slug</label>
+            <input type="text" name="slug" id="category_slug" placeholder="Slug">
+            <?php if (isset($errors['slug'])): ?>
+                <small><?= e($errors['slug']) ?></small>
+            <?php endif; ?>
+        </div>
+
+        <button type="submit" class="button button--primary button--blueberry">Submit</button>
+    </form>
+</main>
+
+<?php require base_path('views/partials/foot.php') ?>

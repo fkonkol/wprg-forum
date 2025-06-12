@@ -1,0 +1,59 @@
+input {
+    width: 100%;
+    max-width: 255px;
+}
+
+input,
+textarea {
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    outline: none;
+    border: 1px solid var(--c-neutral-6);
+    background-color: var(--c-neutral-3);
+}
+
+form {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    max-width: 60ch;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"]+label {
+    color: var(--c-blueberry-6);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+}
+
+input+small,
+select+small,
+textarea+small {
+    color: var(--c-chili-6);
+}
+
+label {
+    display: block;
+    font-weight: var(--fw-bold);
+}
+
+label+input,
+label+textarea {
+    margin-top: 0.5rem;
+}
+
+select {
+    font-family: 'Inter', sans-serif !important;
+    text-transform: none !important;
+    appearance: none;
+    width: 100%;
+    max-width: 420px;
+}

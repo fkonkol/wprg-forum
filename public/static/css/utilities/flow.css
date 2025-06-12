@@ -9,3 +9,8 @@
 .flow.divide > * + * {
     padding-top: 1rem;
 }
+
+.grid-flow {
+    display: grid;
+    gap: 1rem;
+}

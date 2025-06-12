@@ -15,6 +15,13 @@ $router->get('/comments/edit', 'comments/edit');
 $router->put('/comments', 'comments/update');
 $router->delete('/comments', 'comments/destroy');
 
+$router->get('/categories', 'categories/index');
+$router->post('/categories', 'categories/create');
+$router->put('/categories', 'categories/update');
+$router->delete('/categories', 'categories/destroy');
+$router->get('/categories/new', 'categories/new');
+$router->get('/categories/edit', 'categories/edit');
+
 $router->get('/register', 'registrations/new');
 $router->post('/register', 'registrations/create');
 

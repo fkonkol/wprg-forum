@@ -14,7 +14,7 @@
     </div>
 </dialog>
 
-<main class="container with-sidebar flow" style="--flow-space: 2rem;">
+<main class="container flow" style="--flow-space: 2rem;">
     <div class="flow">
         <div class="repel">
             <div style="flex: 1; min-width: 0">
@@ -32,7 +32,6 @@
                 </p>
             </div>
             <div>
-                <button class="button button--secondary button--sunglow">Pin discussion</button>
                 <?php if (Session::user() && (Session::user()->isModerator() || Session::user()->isAdmin())): ?>
                     <button class="button button--tertiary button--neutral" onclick="document.getElementById('actions').showModal();">Actions</button>
                 <?php endif; ?>
@@ -132,8 +131,6 @@
                 </div>
             </section>
         </div>
-    </div>
-    <div>
     </div>
 </main>
 

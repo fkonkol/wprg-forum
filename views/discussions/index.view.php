@@ -1,7 +1,7 @@
 <?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/navigation.php') ?>
 
-<main class="container flow with-sidebar" style="--flow-space: 2rem;">
+<main class="container flow" style="--flow-space: 2rem;">
     <div class="flow">
         <?php require base_path('views/partials/key-header.php') ?>
 
@@ -19,10 +19,7 @@
                                     <?= time_ago($discussion->createdAt()) ?>
                                 </time>
                                 by <?= e($discussion->author()->name()) ?> in 
-                                <a href="/?category=<?= e($discussion->category()->slug()) ?>" class="[ with-icon ] [ text-blueberry-6 fw-bold ]">
-                                    <svg class="icon" style="--space: 0.3em">
-                                        <use href="#<?= e($discussion->category()->slug()) ?>"></use>
-                                    </svg>
+                                <a href="/?category=<?= e($discussion->category()->slug()) ?>" class="[ text-blueberry-6 fw-bold ]">
                                     <?= e($discussion->category()->name()) ?>
                                 </a>
                             </p>
@@ -33,9 +30,6 @@
         </div>
 
         <?php require base_path('views/partials/pagination.php') ?>
-    </div>
-
-    <div class="sidebar">
     </div>
 </main>
 

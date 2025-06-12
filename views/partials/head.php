@@ -13,6 +13,3 @@
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-
-<?php require 'flairs.php' ?>
- 

@@ -25,7 +25,7 @@
             <label for="discussion_category_id" class="visually-hidden">Category</label>
             <select class="button button--primary button--neutral" name="category_id" id="discussion_category_id">
                 <option value="">Select a category</option>
-                <?php foreach (Category::cases() as $category): ?>
+                <?php foreach (Category::all() as $category): ?>
                     <option value="<?= $category->id() ?>"><?= e($category->name()) ?></option>
                 <?php endforeach; ?>
             </select>
