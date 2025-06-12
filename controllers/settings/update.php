@@ -1,6 +1,5 @@
 <?php
 
-$db = new Database;
 
 if (!Session::user()) {
     redirect('/login');
@@ -13,15 +12,29 @@ if ($form->invalid()) {
     redirect_back();
 }
 
-$db->query("
-    UPDATE users
-    SET name = :username
-    WHERE id = :id
+$db = App::resolve(Database::class);
+
+$existingUser = $db->query("
+    select *
+    from users
+    where name = :username
 ", [
     'username' => $_POST['username'],
-    'id' => Session::user()->id(),
 ]);
 
-$_SESSION['user']['name'] = $username;
+if (!$existingUser) {
+    $db->query("
+        update users
+        set name = :username
+        where id = :id
+    ", [
+        'username' => $_POST['username'],
+        'id' => Session::user()->id(),
+    ]);
+
+    $_SESSION['user']['name'] = $username;
+} else {
+    Session::flash('errors', ['username' => 'This username is already taken.']);
+}
 
 redirect('/settings');
