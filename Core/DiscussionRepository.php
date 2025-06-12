@@ -60,6 +60,40 @@ class DiscussionRepository
         return $data ? new Discussion($data) : null;
     }
 
+    public function latest()
+    {
+        $data = $this->db->query("
+            SELECT d.id
+                , d.slug
+                , d.created_at
+                , d.title
+                , d.body
+                , c.id as category_id
+                , c.name as category_name
+                , c.slug as category_slug
+                , u.id as user_id
+                , u.name as user_name
+                , u.avatar_url as user_avatar_url
+                , u.role as user_role
+            FROM discussions d
+            JOIN categories c ON d.category_id = c.id
+            JOIN users u ON d.user_id = u.id
+            JOIN (
+                SELECT category_id, MAX(created_at) as max_created_at
+                FROM discussions
+                GROUP BY category_id
+            ) latest ON d.category_id = latest.category_id AND d.created_at = latest.max_created_at
+            ORDER BY c.name
+        ")->fetchAll();
+
+        $discussions = [];
+        foreach ($data as $d) {
+            $discussions[] = new Discussion($d);
+        } 
+
+        return $discussions;
+    }
+
     public function filter(Filters $filters)
     {
         $data = $this->db->query("

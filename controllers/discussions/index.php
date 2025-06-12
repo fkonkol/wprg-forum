@@ -1,15 +1,17 @@
 <?php
 
-// TODO: Validate query params.
+$repo = App::resolve(DiscussionRepository::class);
 
 $filters = new Filters($_GET);
-
-$repo = App::resolve(DiscussionRepository::class);
-[$discussions, $metadata] = $repo->filter($filters);
+if ($filters->hasCategory()) {
+    [$discussions, $metadata] = $repo->filter($filters);
+} else {
+    $discussions = $repo->latest();
+}
 
 render('discussions/index', [
     'title' => 'Discussions',
     'discussions' => $discussions,
     'filters' => $filters,
-    'metadata' => $metadata,
+    'metadata' => $metadata ?? null,
 ]);
