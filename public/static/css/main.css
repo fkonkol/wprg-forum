@@ -378,3 +378,11 @@ dialog::backdrop {
   display: grid;
   gap: 1rem;
 }
+
+.alert {
+  background-color: var(--c-chili-1);
+  color: var(--c-chili-5);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  width: fit-content;
+}

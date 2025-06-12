@@ -9,7 +9,7 @@
             <img id="preview" src="<?= Session::user()->avatarUrl() ?>" alt="" class="avatar">
         </div>
 
-        <form action="/settings/avatar" method="POST" class="flow" enctype="multipart/form-data">
+        <form action="/settings/avatar" method="POST" class="flow" enctype="multipart/form-data" accept="image/png, image/jpeg">
             <input type="hidden" name="_method" value="put">
             <input type="file" name="avatar" id="avatar">
             <label for="avatar">Select avatar</label>
@@ -20,9 +20,12 @@
     </div>
 
     <form action="/settings" method="POST" class="flow">
-        <div>
+        <div class="grid-flow">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Username" value="<?= htmlspecialchars(Session::user()->name()) ?>">
+            <input type="text" name="username" id="username" placeholder="Username" value="<?= e(Session::user()->name() ?? '') ?>">
+            <?php if (isset($errors['username'])): ?>
+                <small><?= $errors['username'] ?></small>
+            <?php endif; ?>
         </div>
 
         <button type="submit" class="button button--primary button--blueberry">Save changes</button>

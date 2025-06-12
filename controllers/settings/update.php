@@ -6,16 +6,19 @@ if (!Session::user()) {
     redirect('/login');
 }
 
-$username = $_POST['username'];
+$form = new SettingsForm($_POST);
 
-// TODO: Validate the request.
+if ($form->invalid()) {
+    Session::flash('errors', $form->errors());
+    redirect_back();
+}
 
 $db->query("
     UPDATE users
     SET name = :username
     WHERE id = :id
 ", [
-    'username' => $username,
+    'username' => $_POST['username'],
     'id' => Session::user()->id(),
 ]);
 

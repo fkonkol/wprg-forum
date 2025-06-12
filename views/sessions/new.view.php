@@ -5,11 +5,14 @@
     <section class="flow">
         <h1 class="fs-600">Log in</h1>
         <form action="/login" method="POST" class="flow">
-            <div>
+            <?php if (isset($errors['login'])): ?>
+                <div class="alert"><?= $errors['login'] ?></div>
+            <?php endif; ?>
+            <div class="grid-flow">
                 <label for="username" class="visually-hidden">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username">
             </div>
-            <div>
+            <div class="grid-flow">
                 <label for="password" class="visually-hidden">Password</label>
                 <input type="password" name="password" id="password" placeholder="Password">
             </div>

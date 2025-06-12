@@ -1,3 +1,5 @@
 <?php
 
-render('sessions/new');
+render('sessions/new', [
+    'errors' => $_SESSION['_flash']['errors'] ?? [],
+]);

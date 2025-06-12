@@ -1,16 +1,18 @@
 <?php
 
-// TODO: Validate the request here.
+$form = new AuthForm($_POST);
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+if ($form->invalid()) {
+    Session::flash('errors', $form->errors());
+    redirect_back();
+}
 
 $db = App::resolve(Database::class);
 
 $user = $db->query(
     "select * from users where name = :name",
     [
-        'name' => $username,
+        'name' => $_POST['username'],
     ]
 )->fetch();
 
@@ -19,13 +21,11 @@ if (!$user) {
         insert into users (name, password, avatar_url, role)
         values (:name, :password, :avatar_url, :role)
     ", [
-        'name' => $username,
-        'password' => password_hash($password, PASSWORD_DEFAULT),
+        'name' => $_POST['username'],
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
         'avatar_url' => '/static/img/avatar.png',
         'role' => Role::USER->value,
     ]);
-
-    // TODO: Login the user here.
 }
 
 redirect('/');

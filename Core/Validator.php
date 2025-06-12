@@ -41,6 +41,17 @@ class Validator
         );
     }
 
+    public function minRunes(string $field, int $n, string $message)
+    {
+        $value = $this->get($field);
+
+        $this->check(
+            mb_strlen($value, 'UTF-8') >= $n,
+            $field,
+            $message,
+        );
+    }
+
     public function maxRunes(string $field, int $n, string $message)
     {
         $value = $this->get($field);
@@ -58,6 +69,17 @@ class Validator
 
         $this->check(
             in_array($value, $values),
+            $field,
+            $message,
+        );
+    }
+
+    public function alphanumeric(string $field, string $message)
+    {
+        $value = $this->get($field);
+
+        $this->check(
+            ctype_alnum($field),
             $field,
             $message,
         );
