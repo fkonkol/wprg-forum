@@ -14,6 +14,11 @@
             <input type="file" name="avatar" id="avatar">
             <label for="avatar">Select avatar</label>
             <div>
+                <?php if (isset($errors['mime'])): ?>
+                    <small class="text-chili-6"><?= $errors['mime'] ?></small>
+                <?php endif; ?>
+            </div>
+            <div>
                 <button type="submit" class="button button--primary button--blueberry">Save changes</button>
             </div>
         </form>

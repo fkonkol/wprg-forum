@@ -7,6 +7,15 @@ if (!logged_in()) {
 $db = App::resolve(Database::class);
 
 if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === 0) {
+    $form = new AvatarForm([
+        'mime' => mime_content_type($_FILES['avatar']['tmp_name'])
+    ]);
+
+    if ($form->invalid()) {
+        Session::flash('errors', $form->errors());
+        redirect('/settings');
+    }
+
     $uploadDir = base_path('public/storage/avatars/');
     $filename = uniqid() . '-' . basename($_FILES['avatar']['name']);
     $targetFile = $uploadDir . $filename;
