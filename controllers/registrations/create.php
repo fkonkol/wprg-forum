@@ -26,6 +26,8 @@ if (!$user) {
         'avatar_url' => '/static/img/avatar.png',
         'role' => Role::USER->value,
     ]);
+} else {
+    redirect('/login');
 }
 
 redirect('/');
